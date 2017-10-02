@@ -111,7 +111,7 @@
             // http://3g.163.com/touch/jsonp/sy/recommend/0-9.html
             // http://api.qm41.com/vphot/apphome?type=BigPicture&Token=a2b714e2-4c81-4500-934c-54acf631d5ca&phone=15875460426&userID=8080&type=%E6%91%84%E5%BD%B1%E5%B8%88;%20Hm_lvt_099c4471d680cb13eaca0dfa67c5d72b=1506650457;%20Hm_lpvt_099c4471d680cb13eaca0dfa67c5d72b=1506677369
             this.$jsonp('http://3g.163.com/touch/jsonp/sy/recommend/0-9.html').then(data => {
-                // console.log('data:', data);
+                 console.log('data:', data);
                 /*{
                     url: 'javascript:',
                         img: 'https://static.vux.li/demo/1.jpg',
@@ -129,9 +129,10 @@
 
                 // 滚动数据
                 this.marqueeList = data.live.filter(item => {
+                    console.log(item.picInfo[0]);
                     return item.addata === null && item.picInfo[0];
-                }).map(item => {
-                    title: item.title
+                }).map(item2 => {
+                    title: item2.title
                 });
 
                 // 首屏列表数据
@@ -181,7 +182,7 @@
                 }).then(data => {
                     // console.log(data);
 
-                    console.log(this.$refs.myRef);
+//                    console.log(this.$refs.myRef);
 
                     // 首屏列表数据
                     this.panelList = data.list.filter(item => {
@@ -206,7 +207,7 @@
             // 上拉刷新
             infinite() {
 
-                console.log(initLoader);
+//                console.log(initLoader);
                 if (!initLoader) {
 //                    this.$refs.myRef.finishPullToRefresh();
                     this.$refs.myRef.finishInfinite();
